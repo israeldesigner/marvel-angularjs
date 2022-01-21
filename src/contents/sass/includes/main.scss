@@ -1,0 +1,17 @@
+.br{
+    border:2px solid $red-default;
+}
+
+body { 
+    background: url('../images/bg.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+       -moz-background-size: cover;
+         -o-background-size: cover;
+            background-size: cover;
+}
+
+.wrapper {
+    width: 100%;
+    align-items: stretch;
+    position: relative;
+}

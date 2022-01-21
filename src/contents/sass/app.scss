@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web');
+
+@import 'variaveis/variaveis.scss';
+
+@import 'mixins/mixins.scss';
+@import 'mixins/library.scss';
+@import 'mixins/glyphicon.scss';
+
+@import 'includes/header.scss';
+@import 'includes/main.scss';
+@import 'includes/heroi-page.scss';
+@import 'includes/card.scss';
+@import 'includes/responsive.scss';
+
+@import './sass/font-awesome.min.css';
+
+
+/***content***/
+
+@font-face {
+  font-family: 'font-awesome';
+  src: url(../fonts/fontawesome-webfont.ttf);
+  font-weight: normal;
+  font-style: normal;
+}
+
+body{
+	font-family: 'Titillium Web', sans-serif;
+}
+
+
+/* hidden BOOTTSTRAP 4
+
+*/
+
+[ng-cloak] {
+        display: none !important;
+}

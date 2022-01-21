@@ -1,0 +1,81 @@
+{
+    "paths": {
+        "vendor": {
+            "css": {
+                "includes": ["/**/dist/**/*.css", "/**/*.css"],
+                "excludes": ["/**/dist/**/*.min.css", "/**/*.min.css", "/**/docs/**/*.css", "/**/tests/**/*.css"]
+            },
+            "js": {
+                "includes": [],
+                "excludes": []
+            },
+            "js": {
+                "includes": [],
+                "excludes": []
+            },
+            "font": {
+                "includes": ["/**/dist/fonts/**"],
+                "excludes": []
+            },
+            "html": {
+                "includes": [],
+                "excludes": []
+            },
+            "image": {
+                "includes": [],
+                "excludes": []
+            }
+        },
+        "source": {
+            "css": {
+                "includes": ["./src/contents/**/*.css", "./src/contents/**/*.map"],
+                "excludes": []
+            },
+            "js": {
+                "includes": ["./src/app/**/*.js", "./src/app/contents/**/*.js", "./src/contents/**/*.js"],
+                "excludes": ["./src/app/config/", "./src/app/config/**"]
+            },
+            "html": {
+                "includes": ["./src/app/**/*.html"],
+                "excludes": ["./src/*.html"]
+            },
+            "font": {
+                "includes": ["./src/contents/fonts/*"],
+                "excludes": ["./src/fonts/*", "./src/fonts/glyphicons-halflings-regular.*"]
+            },
+            "image": {
+                "includes": ["./src/contents/images/*"],
+                "excludes": ["./src/img/*"]
+            },
+            "sass": {
+                "includes": ["./src/contents/sass/*.scss"],
+                "excludes": [],
+                "watches": {
+                  "includes": ["./src/contents/sass/**/*.scss"],
+                  "excludes": []
+                }
+            }
+        },
+        "build": {
+            "base": "./build/",
+            "css": "./build/contents/css/",
+            "js": "./build/contents/js/",
+            "font": "./build/contents/css/fonts/",
+            "image": "./build/contents/images/"
+        }
+    },
+    "files": {
+        "app": {
+            "js": "app.js",
+            "css": "app.css",
+            "index": "home.html"
+        },
+        "vendor": {
+            "js": "vendor.js",
+            "css": "vendor.css"
+        }
+    },
+    "server": {
+        "port": 8081
+    }
+}

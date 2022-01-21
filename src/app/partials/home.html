@@ -1,0 +1,28 @@
+<!-- details card section starts from here -->
+<section class="details-card">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-8 col-12 mb-4 mt-4">
+           <input type="text" ng-model="filterHero" 
+           placeholder="Pesquisar Herói marvel"
+           class="form-control">
+         </div>
+      </div>
+       <div class="row">
+           <div class="col-6 col-md-4 mb-5" ng-repeat="char in charHeroes | filter: filterHero">
+               <div class="card-content">
+                   <div class="card-img">
+                       <img src="{{char.thumbnail.path}}.{{char.thumbnail.extension}}" alt="imageem do herói {{char.name}}">
+                       <!-- <span><h4>{</h4></span> -->
+                   </div>
+                   <div class="card-desc">
+                       <h3>{{char.name}}</h3>
+                       <p class="minimizeCards">{{char.description}}</p>
+                       <a href="/#!/heroi/{{char.id}}" class="btn-card">Ficha completa</a>   
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+</section>
+<!-- details card section starts from here -->
