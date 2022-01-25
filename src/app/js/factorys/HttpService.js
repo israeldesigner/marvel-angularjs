@@ -14,9 +14,8 @@
     var auth = `ts=${timestamp}&apikey=${publicKey}&hash=${hashFinal}`; 
 
     var urlAllChar= `${appSettings.baseUrl()}/characters?`;
-
-    var _getHeroes = function () {
-      return $http.get(`${urlAllChar}${auth}`, {
+    var _getHeroes = function (numLimit, numOff) {
+      return $http.get(`${urlAllChar}${auth}&limit=${numLimit}&offset=${numOff}`, {
       });
     }
 
