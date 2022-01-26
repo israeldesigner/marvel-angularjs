@@ -1,4 +1,3 @@
-<!-- details card section starts from here -->
 <section class="details-card">
    <div class="container">
       <div class="row">
@@ -9,7 +8,8 @@
          </div>
       </div>
        <div class="row">
-           <div class="col-6 col-md-4 mb-5" ng-repeat="char in charHeroes | filter: filterHero">
+           <div class="col-6 col-md-4 mb-5" ng-repeat="char in charHeroes | filter: filterHero" 
+           directive-when-scrolled="loadMore()">
                <div class="card-content">
                    <div class="card-img">
                        <img src="{{char.thumbnail.path}}.{{char.thumbnail.extension}}" alt="imageem do herói {{char.name}}">
@@ -25,4 +25,3 @@
        </div>
    </div>
 </section>
-<!-- details card section starts from here -->
