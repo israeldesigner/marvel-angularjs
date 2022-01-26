@@ -1,8 +1,19 @@
+function resolve(index, timeout) {
+  return {
+    data: function($q, $timeout) {
+      var deferred = $q.defer();
+      $timeout(function () {
+        deferred.resolve(console.log('Data resolve called ' + index));
+      }, timeout);
+      return deferred.promise;
+    }
+  };
+}
 
 angular.module('MarvelApp', ['ui.router', 'ngResource','ngStorage','ngAnimate','ngSanitize'])
-.config(function($stateProvider, $urlRouterProvider,$locationProvider) {
+.config(function($stateProvider, $urlRouterProvider, $httpProvider,$locationProvider) {
   
-
+    $httpProvider.useApplyAsync(true);
     $urlRouterProvider.otherwise("/");
     var header = {
         templateUrl: 'includes/header.html'
@@ -17,7 +28,7 @@ angular.module('MarvelApp', ['ui.router', 'ngResource','ngStorage','ngAnimate','
         views:{
             'header':{
             templateUrl: 'includes/header.html',
-            controller: 'HeaderController'
+            controller: 'HeaderController',
             },
             'content':{
             template: '<div ui-view></div>'
@@ -31,12 +42,14 @@ angular.module('MarvelApp', ['ui.router', 'ngResource','ngStorage','ngAnimate','
       .state('home.um', {
         url: "/",
         templateUrl: 'partials/home.html',
-        controller: 'HomeController'
+        controller: 'HomeController',
+        resolve: resolve(1, 1597)
       })
       .state('home.herois', {
         url: "/heroi/:id",
         templateUrl: 'partials/herois.html',
-        controller: 'HeroisController'
+        controller: 'HeroisController',
+        resolve: resolve(2, 2584)
       })
 
     // $locationProvider.html5Mode(true);
