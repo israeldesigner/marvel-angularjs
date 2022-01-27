@@ -7,7 +7,7 @@
     "test": "test",
     "gulp": "gulp",
     "postinstall": "npm prune",
-    "start": "gulp start --env=prod"
+    "start": "gulp start --env=local_dev"
   },
   "keywords": [
     "marvel api",
