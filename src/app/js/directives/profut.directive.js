@@ -7,8 +7,6 @@ angular.module('MarvelApp').directive('ifLoading', function($http, $resource){
 
             scope.$watch(scope.isLoading, toggleElement);
 
-            ////////
-
             function toggleElement(loading) {
 
               if (loading) {

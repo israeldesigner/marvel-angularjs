@@ -10,7 +10,8 @@ function resolve(index, timeout) {
   };
 }
 
-angular.module('MarvelApp', ['ui.router', 'ngResource','ngStorage','ngAnimate','ngSanitize'])
+angular.module('MarvelApp', ['ui.router', 'ngResource','ngStorage','ngAnimate','ngSanitize', 
+'ui.bootstrap'])
 .config(function($stateProvider, $urlRouterProvider, $httpProvider,$locationProvider) {
   
     $httpProvider.useApplyAsync(true);

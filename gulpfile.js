@@ -16,14 +16,11 @@ global
     'use strict';
 
     var gulp = require('gulp');
-    var imagemin = require('gulp-imagemin');
     var clean = require('gulp-clean');
     var concat = require('gulp-concat');
-    var htmlreplace = require('gulp-html-replace');
     var uglyfly = require('gulp-uglyfly');
     var cssmin = require('gulp-cssmin');
     var sass = require('gulp-sass');
-    var watch = require('gulp-watch');
     var config = require('./gulp.config.json');
     var del = require('del');
     var bower = require('gulp-bower');
@@ -247,16 +244,15 @@ global
         var sourceStream = gulp.src(paths);
         info('The artifacts to be used are in: ', paths, '.');
         info('The artifacts will be generated in: %s.', config.paths.build.js);
-        if (argv.mode === 'debug') {
+        if (argv.environment !== 'prod') {
             debug('The files to be processed by this task are:');
             sourceStream.pipe(print());
         }
 
-        // TODO Minimizar e "enfeiar" scripts JavaScript.
+        // TODO Minimizar scripts JavaScript.
         return sourceStream
             .pipe(sourcemaps.init())
             .pipe(concat(config.files.app.js))
-            .pipe(sourcemaps.write('./'))
             .pipe(gulp.dest(config.paths.build.js));
     });
 

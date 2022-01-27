@@ -41,7 +41,6 @@
 }
 .card-desc {
 	padding: 1.25rem;
-    height: 275px;
 }
 
 .card-desc h3 {
@@ -93,3 +92,12 @@ a.btn-card {
     text-decoration: none;
     color: #fff;
 }
+
+@media (max-width: 540px) {
+      
+
+    .btn-card{
+        padding: 0.84rem 1.25rem;
+        font-size: .55rem;
+    }
+  }

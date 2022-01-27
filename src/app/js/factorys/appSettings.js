@@ -3,6 +3,7 @@
   .factory('appSettings', appSettings);
 
   function appSettings(){
+    // var baseUrl = "";
     var baseUrl = "https://gateway.marvel.com/v1/public";
    
     function _baseUrl(){

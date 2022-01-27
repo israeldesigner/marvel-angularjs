@@ -4,6 +4,88 @@
         background: rgba(255,255,255, .7);
         margin: 20px 15px;
     }
+
+    .heroiBlock--center__content{
+        .nav-tabs{
+            .nav-link{
+                // text-decoration: underline;
+                color: $black;
+                font-size: 1.8rem;
+                font-weight: bold;
+                &:hover{
+                    border: none !important;
+                    opacity: 0.75 !important;
+                }
+                &:focus{
+                    color: $red-default;
+                    background-color: rgba(255,255,255,.0);
+                    border: none !important;
+                }
+                .active{
+                    color: $red-default;
+                    background-color: $blue-default !important;
+                    border: none !important;
+                }
+            }
+        }
+        .firmalar{
+            .firma-card{
+                background: #fff;
+                border-radius: 5px;
+                box-shadow: 0 4px 6px -1px #c6cfea;
+                overflow: hidden;
+            }
+            .firma-resim{
+                position: relative;
+                background-size: cover;
+                background-position: center;
+                transition: -webkit-transform .2s;
+                transition: transform .2s;
+                height: 250px;
+                width: 165px;
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+            }
+        }
+    }
+
+
+    .well{
+        .image-grid-cover {
+            width: 100%;
+            background-size: cover;
+            min-height: 180px;
+            position: relative;
+            margin-bottom: 15px;
+            text-shadow: rgba(0,0,0,.8) 0 1px 0;
+            border-radius: 4px;
+            &:hover{
+                opacity: 0.7;
+            }
+        }
+        .image-grid-clickbox {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            z-index: 20;
+            background: rgba(0,0,0,.45);
+        }
+        .cover-wrapper {
+            font-size: 18px;
+            text-align: center;
+            display: block;
+            color: #fff;
+            text-shadow: rgba(0,0,0,.8) 0 1px 0;
+            z-index: 21;
+            position: relative;
+            top: 80px;
+        }        
+    }
 }
 
 
@@ -16,3 +98,49 @@
 .image-block{float:left; width:100%; margin-bottom:10px;}
 .footer-link{float:left; width:100%; background:#222222; text-align:center; padding:30px;}
 .footer-link a{color:#A9FD00; font-size:18px; text-transform:uppercase;}
+
+@media (max-width: 768px) {
+      
+    .firma-logo{
+          width: calc(33.66667% - .75rem);
+          height: 6.5rem;
+          margin: 5px .375rem;
+    }
+    .firma-resim {
+      position: relative;
+      z-index: 0;
+      height: 200px;
+    }
+    .img-padding-no{
+      padding-right: 0px;
+      padding-left: 0px;
+    }
+
+    .heroiBlock{
+
+        .heroiBlock--center__content{
+            .nav-tabs{
+                .nav-link{
+                    font-size: 1.50rem !important;
+                }
+            }
+        }
+
+    }
+}
+
+@media (max-width: 540px) {
+      
+
+    .heroiBlock{
+
+        .heroiBlock--center__content{
+            .nav-tabs{
+                .nav-link{
+                    font-size: 1.2rem !important;
+                }
+            }
+        }
+
+    }
+  }
