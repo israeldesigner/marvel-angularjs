@@ -10,7 +10,6 @@
   "scripts": {
     "test": "test",
     "gulp": "gulp",
-    "postinstall": "gulp default && bower default",
     "start": "gulp start --env=local_dev",
     "build": "gulp start --env=prod",
     "heroku-postbuild": "gulp start --env=prod"
@@ -56,6 +55,8 @@
   },
   "dependencies": {
     "graceful-fs": "^4.2.9",
-    "vinyl-fs": "^3.0.3"
+    "vinyl-fs": "^3.0.3",
+    "gulp": "^3.9.1",
+    "bower": "^1.8.0"
   }
 }
