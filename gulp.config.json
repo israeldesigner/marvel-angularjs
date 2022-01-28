@@ -9,10 +9,6 @@
                 "includes": [],
                 "excludes": []
             },
-            "js": {
-                "includes": [],
-                "excludes": []
-            },
             "font": {
                 "includes": ["/**/dist/fonts/**"],
                 "excludes": []

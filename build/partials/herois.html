@@ -1,0 +1,112 @@
+<section class="heroiBlock" >
+    <div  class="heroiBlock--center">
+       <section class="post-content-section">
+          <div class="container">
+             <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 post-title-block text-center">
+                   <h1 class="text-center">{{heroi[0].name}}</h1>
+                   <img src="{{heroi[0].thumbnail.path}}.{{heroi[0].thumbnail.extension}}"  class="img-fluid">
+                   <p class="lead">{{heroi[0].description}}.</p>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-12 heroiBlock--center__content">
+                  <uib-tabset active="active">
+                     <uib-tab index="0" heading="Comics">
+                        <div class="firmalar container">    
+                           <div class="row">
+                               <div class="col-sm-12 col-6" ng-repeat="heroisComic in heroiComics">
+                                   <div class="firma-card row mb-3" >
+                                      <div class="col-sm-3 col-12 pl-0 img-padding-no">
+                                          <div class="firma-resim" 
+                                          style="background-image: url( {{heroisComic.thumbnail.path}}.{{heroisComic.thumbnail.extension}});">
+                                          </div>
+                                      </div>
+                                      <div class="col-sm-9 col-12 pl-0 pt-3">
+                                          <div class="firma-aciklama">
+                                              <h4 class="text-danger font-weight-bold">{{heroisComic.title}}</h4>
+                                              <p>
+                                               {{heroisComic.description}}
+                                              </p>
+                                          </div>
+                                      </div>
+                                   </div>                 
+                               </div>
+                           </div>
+                        </div>
+                     </uib-tab>
+                     <uib-tab index="1" heading="Series" disable="tab.disabled">
+                        <div class="firmalar container">    
+                           <div class="row">
+                               <div class="col-sm-12 col-6" ng-repeat="heroSerie in heroSeries">
+                                   <div class="firma-card row mb-3" >
+                                      <div class="col-sm-3 col-12 pl-0 img-padding-no">
+                                          <div class="firma-resim" 
+                                          style="background-image: url( {{heroSerie.thumbnail.path}}.{{heroSerie.thumbnail.extension}});">
+                                          </div>
+                                      </div>
+                                      <div class="col-sm-9 col-12 pl-0 pt-3">
+                                          <div class="firma-aciklama">
+                                              <h4 class="text-danger font-weight-bold">{{heroSerie.title}}</h4>
+                                              <p>
+                                               {{heroSerie.id}}
+                                              </p>
+                                              <p>
+                                               {{heroSerie.description}}
+                                              </p>
+                                          </div>
+                                      </div>
+                                   </div>                 
+                               </div>
+                           </div>
+                       </div>
+                     </uib-tab>
+                     <uib-tab index="2" heading="Stories" disable="tab.disabled">
+                       <div class="firmalar container">    
+                           <div class="row">
+                               <div class="col-sm-12 col-6" ng-repeat="heroStorie in heroStories">
+                                   <div class="firma-card row mb-3" >
+                                      <div class="col-sm-3 col-12 pl-0 img-padding-no">
+                                          <div class="firma-resim" 
+                                          style="background-image: url( {{heroStorie.thumbnail.path}}.{{heroStorie.thumbnail.extension}});">
+                                          </div>
+                                      </div>
+                                      <div class="col-sm-9 col-12 pl-0 pt-3">
+                                          <div class="firma-aciklama">
+                                              <h4 class="text-danger font-weight-bold">{{heroStorie.title}}</h4>
+                                              <p>
+                                               {{heroStorie.id}}
+                                              </p>
+                                              <p>
+                                               {{heroStorie.description}}
+                                              </p>
+                                          </div>
+                                      </div>
+                                   </div>                 
+                               </div>
+                           </div>
+                       </div>
+                     </uib-tab>
+                   </uib-tabset>
+                </div>
+                <!--aside heros-->
+                <aside class="col-lg-3 col-md-3 col-sm-12">
+                   <div class="well">
+                      <h2>Others</h2>
+                   </div>
+                   <div class="well">
+                     <div ng-repeat="char in charHeroes" style="background-image: url( {{char.thumbnail.path}}.{{char.thumbnail.extension}} );" class="image-grid-cover">
+								<a href="/#!/heroi/{{char.id}}" class="image-grid-clickbox"></a>
+								<a href="/#!/heroi/{{char.id}}" class="cover-wrapper">{{char.name}}</a>
+							</div>
+                   </div>
+                </aside>
+                 <!--aside heros-->
+             </div>
+          </div>
+          <!-- /container -->
+       </section>
+    </div>
+
+</section>
+
+
+

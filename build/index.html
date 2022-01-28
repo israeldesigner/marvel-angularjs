@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- General Tags -->
+    <title>Marvel</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">  
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="" />
+    <meta property="og:title" content="" />
+    <meta property="og:description"
+          content="" />
+    <meta property="og:type" content="video.movie" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+
+
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="robots" content="index,follow" />
+
+    <!-- StyleSheets -->
+    <!-- dependency:css -->
+    <!-- inject:vendor:css -->
+    <link rel="stylesheet" href="contents/css/vendor.css" />
+    <!-- endinject -->
+    <!-- app:css -->
+    <!-- inject:app:css -->
+    <link rel="stylesheet" href="contents/css/app.css" />
+    <!-- endinject -->
+    
+    <!-- JavaScripts -->
+    <!-- dependency:js -->
+    <!-- inject:vendor:js -->
+    <script type="application/javascript" src="contents/js/vendor.js"></script>
+    <!-- endinject -->
+</head>
+
+<body class="wrap" ng-cloak ng-app="MarvelApp">
+<!--*loading directive*-->
+<div id="loader-wrapper" if-loading>
+    <div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+</div>
+<!--*/loading directive*-->
+<div ui-view="header"></div>
+  <div id='content' ui-view="content"><!-- marvel app --></div>
+<div id='footer' ui-view="footer"></div>
+
+<!--diretiva modais public-->
+<!-- <my-modal></my-modal> -->
+<!--**/**-->
+
+
+
+<!-- app:js -->
+<!-- inject:app:js -->
+<script type="application/javascript" src="contents/js/app.js"></script>
+
+<!-- #descomentar ao mandar pra produção -->
+<script type="text/javascript">
+  console.log = function(){};
+</script> 
+
+
+</body>
+<base href="/">
+</html>

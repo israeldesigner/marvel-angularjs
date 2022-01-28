@@ -1,0 +1,46 @@
+<section class="details-card">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-8 col-12 mb-4 mt-4">
+            <input type="text" 
+            ng-model="asyncSelected" 
+            placeholder="Pesquisa herói" 
+            uib-typeahead="characters for characters in getCharacters($viewValue)" 
+            typeahead-loading="loadingCharacters"  
+            uib-typeahead-select-on-blur="true" 
+            uib-typeahead-on-select="selectCharacter($item);asyncSelected=''"
+            class="form-control">
+            <i ng-show="loadingCharacters" class="glyphicon glyphicon-refresh"></i>
+            <!--  -->
+            <span ng-if="noResults" uib-dropdown uib-dropdown-toggle auto-close="disabled" is-open="true">
+            <ul class="uib-dropdown-menu" >
+                <li><a href>no results</a></li>
+            </ul>
+            </span>
+        
+           <div ng-if="showCharInfo">
+             <div ng-if="char.thumb" class="thumbnail"><img src="{{char.thumb}}" /></div>
+             <div class="charName"><b>{{char.name}}</b></div>
+             <div class="charDesc">{{char.desc}}</div>
+           </div>
+
+         </div>
+      </div>
+       <div  class="row">
+           <div class="col-6 col-md-4 mb-5" ng-repeat="char in charHeroes | limitTo: limit" >
+               <div class="card-content">
+                   <div class="card-img">
+                       <img src="{{char.thumbnail.path}}.{{char.thumbnail.extension}}" alt="imageem do herói {{char.name}}" />
+                   </div>
+                   <div class="card-desc">
+                       <h3 class="mb-4">{{char.name}}</h3>
+                       <a href="/#!/heroi/{{char.id}}" class="btn-card">Ficha completa</a>   
+                   </div>
+               </div>
+           </div>
+           <div class="col-12">
+               <button class="btn btn-danger" ng-click="loadMore()"> Carregar Mais</button>
+           </div>
+       </div>
+   </div>
+</section>
