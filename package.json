@@ -3,12 +3,17 @@
   "version": "1.0.0",
   "description": "israel api marvel",
   "main": "index.js",
+  "engines": {
+    "node": "11.1.0",
+    "npm": "6.4.1"
+  },
   "scripts": {
     "test": "test",
     "gulp": "gulp",
     "postinstall": "npm prune",
     "start": "gulp start --env=local_dev",
-    "build": "gulp start --env=prod"
+    "build": "gulp start --env=prod",
+    "heroku-postbuild": "gulp start --env=prod"
   },
   "keywords": [
     "marvel api",
