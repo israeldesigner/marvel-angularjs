@@ -326,27 +326,39 @@ angular.module('MarvelApp').directive('ifLoading', function($http, $resource){
 
     //factory pegar herois por parametro ID
     var _getHero = function (id) {
-      return $http.get(`${appSettings.baseUrl()}/characters/${id}?${auth}`,{
-
-      })
+      return $http({
+        method: 'GET',
+        url: `${appSettings.baseUrl()}/characters/${id}?${auth}`,
+        dataType: 'jsonp',
+      })    
     }
 
     //factory pegar revista por parametro ID do herói
     var _getHeroComic = function (id) {
-      return $http.get(`${appSettings.baseUrl()}/characters/${id}/comics?${auth}`,{
-      })
+      return $http({
+        method: 'GET',
+        url: `${appSettings.baseUrl()}/characters/${id}/comics?${auth}`,
+        dataType: 'jsonp',
+      }) 
     }
 
    //factory pegar story por parametro ID do herói
     var _getHeroStories = function (id) {
-      return $http.get(`${appSettings.baseUrl()}/characters/${id}/stories?${auth}`,{
-      })
+      return $http({
+        method: 'GET',
+        url: `${appSettings.baseUrl()}/characters/${id}/stories?${auth}`,
+        dataType: 'jsonp',
+      }) 
     }
+
 
     //factory pegar serie por parametro ID do herói
     var _getHeroSeries = function (id) {
-      return $http.get(`${appSettings.baseUrl()}/characters/${id}/series?${auth}`,{
-      })
+      return $http({
+        method: 'GET',
+        url: `${appSettings.baseUrl()}/characters/${id}/series?${auth}`,
+        dataType: 'jsonp',
+      }) 
     }
 
     //factory pegar criadores por parametro id da revista
