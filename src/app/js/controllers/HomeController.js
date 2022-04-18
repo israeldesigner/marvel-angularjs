@@ -6,8 +6,10 @@ angular.module('MarvelApp').controller('HomeController',
     $scope.offset = 0;
     $scope.char={};
     $scope.testandOHero = '';
-    $scope.showCharInfo= true;
-  
+    $scope.showCharInfo= true
+
+    $scope.offset = Math.floor((Math.random() * 1000) + 1);
+    console.log($scope.offset);
     //function carregar promisse e preencher array
     $scope.loadMore = function(limit, offset) {
       $scope.offset += $scope.limit;

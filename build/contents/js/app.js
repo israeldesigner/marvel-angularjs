@@ -68,207 +68,6 @@ angular.module('MarvelApp', ['ui.router', 'ngResource','ngStorage','ngAnimate','
   }
 })();
 
-angular.module('MarvelApp').controller('HeaderController',
-    function( $scope ) {
-        
-});
-
-angular.module('MarvelApp').controller('HeroisController',
-  function ($scope, $stateParams, HttpService) {
-
-    $scope.heroiId = $stateParams.id;
-    $scope.heroi = [];
-    $scope.heroiComics = [];
-    $scope.heroStories = [];
-    $scope.heroSeries = [];
-    $scope.creatorsComics = [];
-    $scope.limit = 5;
-    $scope.offset = 98;
-
-    //Serviço que busca pelo parâmetro do herói
-    HttpService.getHero($stateParams.id).then(function successCallback(response) {
-      $scope.heroi = response.data.data.results;
-			console.log($scope.heroi);
-    }, function errorCallback(response) {
-      console.log(response);
-    });
-
-    //Serviço que busca revista pelo parâmetro do herói
-    HttpService.getHeroComic($stateParams.id).then(function successCallback(response) {
-      $scope.heroiComics = response.data.data.results;
-      console.log(response);
-    }, function errorCallback(response) {
-      console.log(response);
-    });
-
-    //Serviço que busca stories pelo parâmetro do herói
-    HttpService.getHeroStories($stateParams.id).then(function successCallback(response) {
-      $scope.heroStories = response.data.data.results;
-      console.log(response);
-    }, function errorCallback(response) {
-      console.log(response);
-    });
-
-    //Serviço que busca series pelo parâmetro do herói
-    HttpService.getHeroSeries($stateParams.id).then(function successCallback(response) {
-      $scope.heroSeries = response.data.data.results;
-      console.log(response);
-    }, function errorCallback(response) {
-      console.log(response);
-    });
-
-    //Serviço que busca lista herói com Limit fixo para aside
-    HttpService.getHeroes($scope.limit, $scope.offset).then(function successCallback(response) {
-      $scope.charHeroes = response.data.data.results;
-    }, function errorCallback(response) {
-      console.log(response);
-    });
-      
-
-    $scope.init = function () {}
-
-  });
-
-
-angular.module('MarvelApp').controller('HomeController',
-  function ( HttpService, $state, $location, $scope,  $http) {
-
-    $scope.charHeroes = [];
-    $scope.limit = 9;
-    $scope.offset = 0;
-    $scope.char={};
-    $scope.testandOHero = '';
-    $scope.showCharInfo= true;
-  
-    //function carregar promisse e preencher array
-    $scope.loadMore = function(limit, offset) {
-      $scope.offset += $scope.limit;
-      console.log($scope.offset);
-      console.log($scope.limit);
-      HttpService.getHeroes($scope.limit, $scope.offset).then(function successCallback(response) {
-        $scope.charHeroes = response.data.data.results;
-      }, function errorCallback(response) {
-        console.log(response);
-      });
-    };
-    
-    //function para fazer a pesquisa por heroi typehead uib
-    $scope.getCharacters = function(val) {
-      HttpService.getHeroesSearch(val).then(function(response){
-        console.log(val);
-        $scope.charInfoArr=response.data.data.results;
-        return response.data.data.results.map(function(item){
-          console.log(item.name);
-          return item.name;
-        });
-      });
-    }
-    
-    
-    $scope.loadMore($scope.limit, $scope.offset);
-
-    $scope.selectCharacter=function (item){
-      angular.forEach($scope.charInfoArr, function(obj, key){
-        if(obj.name===item){
-          console.log(obj.name)
-          console.log(item)
-           if (obj.thumbnail){
-             $scope.char.thumb= obj.thumbnail.path+"."+obj.thumbnail.extension;
-           }else{
-             $scope.char.thumb="";
-           }
-           
-           $scope.char.name= obj.name;
-           $scope.char.desc= obj.description;
-           $scope.showCharInfo= true;
-           console.log($scope.showCharInfo)
-        }
-         
-      });
-      
-    }
-
-    $scope.init = function () {
-      
-    }
-    
-});
-
-
-
-
-
-angular.module('MarvelApp').directive('myModal', function() {
-	return {
-        templateUrl:"includes/modal.html",
-        replace: true,
-        restrict: 'AE',
-        link: function(scope, element, attrs, ctrl){
-        }
-	}; 
-});
-// angular.module('MarvelApp').directive("directiveWhenScrolled", function() {
-//     return function(scope, elm, attr) {
-//       var raw = elm[0];
-  
-//       elm.bind('scroll', function() {
-//         if (raw.scrollTop + raw.offsetHeight >= raw.scrollHeight) {
-//           scope.$apply(attr.directiveWhenScrolled);
-//         }
-//       });
-//     };
-// });
-
-angular.module('MarvelApp').directive('ngInfiniteScroll', function () {
-  return function (scope, element, attrs) {
-      
-      element.on("scroll", function (event) {
-          let raw = element[0] || element;
-          if (raw.scrollTop + raw.offsetHeight >= raw.scrollHeight) {
-              scope.$apply(function () {
-                  scope.$eval(attrs.ngInfiniteScroll);
-              });
-              event.preventDefault();
-          }
-      });
-
-  };
-});
-angular.module('MarvelApp').directive("directiveWhenScrolled", function() {
-    return function(scope, elm, attr) {
-      var raw = elm[0];
-  
-      elm.bind('scroll', function() {
-        if (raw.scrollTop + raw.offsetHeight >= raw.scrollHeight) {
-          scope.$apply(attr.directiveWhenScrolled);
-        }
-      });
-    };
-});
-angular.module('MarvelApp').directive('ifLoading', function($http, $resource){
-	// Runs during compile
-    return {
-        restrict: 'A',
-        link: function(scope, elem) {
-            scope.isLoading = isLoading;
-
-            scope.$watch(scope.isLoading, toggleElement);
-
-            function toggleElement(loading) {
-
-              if (loading) {
-                elem[0].style.display = "block";
-              } else {
-                elem[0].style.display = "none";
-              }
-            }
-
-            function isLoading() {
-              return $http.pendingRequests.length > 0;
-            }
-        }
-    }
-});
 (function  () {
     angular.module('MarvelApp')
     .factory('hashConfig', hashConfig);
@@ -400,6 +199,211 @@ angular.module('MarvelApp').directive('ifLoading', function($http, $resource){
   }
 })();
 
+angular.module('MarvelApp').controller('HeaderController',
+    function( $scope ) {
+        
+});
+
+angular.module('MarvelApp').controller('HeroisController',
+  function ($scope, $stateParams, HttpService) {
+
+    $scope.heroiId = $stateParams.id;
+    $scope.heroi = [];
+    $scope.heroiComics = [];
+    $scope.heroStories = [];
+    $scope.heroSeries = [];
+    $scope.creatorsComics = [];
+    $scope.limit = 5;
+    $scope.offset = 0;
+
+    $scope.offset = Math.floor((Math.random() * 1000) + 1);
+
+    //Serviço que busca pelo parâmetro do herói
+    HttpService.getHero($stateParams.id).then(function successCallback(response) {
+      $scope.heroi = response.data.data.results;
+			console.log($scope.heroi);
+    }, function errorCallback(response) {
+      console.log(response);
+    });
+
+    //Serviço que busca revista pelo parâmetro do herói
+    HttpService.getHeroComic($stateParams.id).then(function successCallback(response) {
+      $scope.heroiComics = response.data.data.results;
+      console.log(response);
+    }, function errorCallback(response) {
+      console.log(response);
+    });
+
+    //Serviço que busca stories pelo parâmetro do herói
+    HttpService.getHeroStories($stateParams.id).then(function successCallback(response) {
+      $scope.heroStories = response.data.data.results;
+      console.log(response);
+    }, function errorCallback(response) {
+      console.log(response);
+    });
+
+    //Serviço que busca series pelo parâmetro do herói
+    HttpService.getHeroSeries($stateParams.id).then(function successCallback(response) {
+      $scope.heroSeries = response.data.data.results;
+      console.log(response);
+    }, function errorCallback(response) {
+      console.log(response);
+    });
+
+    //Serviço que busca lista herói com Limit fixo para aside
+    HttpService.getHeroes($scope.limit, $scope.offset).then(function successCallback(response) {
+      $scope.charHeroes = response.data.data.results;
+    }, function errorCallback(response) {
+      console.log(response);
+    });
+      
+
+    $scope.init = function () {}
+
+  });
+
+
+angular.module('MarvelApp').controller('HomeController',
+  function ( HttpService, $state, $location, $scope,  $http) {
+
+    $scope.charHeroes = [];
+    $scope.limit = 9;
+    $scope.offset = 0;
+    $scope.char={};
+    $scope.testandOHero = '';
+    $scope.showCharInfo= true
+
+    $scope.offset = Math.floor((Math.random() * 1000) + 1);
+    console.log($scope.offset);
+    //function carregar promisse e preencher array
+    $scope.loadMore = function(limit, offset) {
+      $scope.offset += $scope.limit;
+      console.log($scope.offset);
+      console.log($scope.limit);
+      HttpService.getHeroes($scope.limit, $scope.offset).then(function successCallback(response) {
+        $scope.charHeroes = response.data.data.results;
+      }, function errorCallback(response) {
+        console.log(response);
+      });
+    };
+    
+    //function para fazer a pesquisa por heroi typehead uib
+    $scope.getCharacters = function(val) {
+      HttpService.getHeroesSearch(val).then(function(response){
+        console.log(val);
+        $scope.charInfoArr=response.data.data.results;
+        return response.data.data.results.map(function(item){
+          console.log(item.name);
+          return item.name;
+        });
+      });
+    }
+    
+    
+    $scope.loadMore($scope.limit, $scope.offset);
+
+    $scope.selectCharacter=function (item){
+      angular.forEach($scope.charInfoArr, function(obj, key){
+        if(obj.name===item){
+          console.log(obj.name)
+          console.log(item)
+           if (obj.thumbnail){
+             $scope.char.thumb= obj.thumbnail.path+"."+obj.thumbnail.extension;
+           }else{
+             $scope.char.thumb="";
+           }
+           
+           $scope.char.name= obj.name;
+           $scope.char.desc= obj.description;
+           $scope.showCharInfo= true;
+           console.log($scope.showCharInfo)
+        }
+         
+      });
+      
+    }
+
+    $scope.init = function () {
+      
+    }
+    
+});
+
+
+
+
+
+angular.module('MarvelApp').directive('myModal', function() {
+	return {
+        templateUrl:"includes/modal.html",
+        replace: true,
+        restrict: 'AE',
+        link: function(scope, element, attrs, ctrl){
+        }
+	}; 
+});
+// angular.module('MarvelApp').directive("directiveWhenScrolled", function() {
+//     return function(scope, elm, attr) {
+//       var raw = elm[0];
+  
+//       elm.bind('scroll', function() {
+//         if (raw.scrollTop + raw.offsetHeight >= raw.scrollHeight) {
+//           scope.$apply(attr.directiveWhenScrolled);
+//         }
+//       });
+//     };
+// });
+
+angular.module('MarvelApp').directive('ngInfiniteScroll', function () {
+  return function (scope, element, attrs) {
+      
+      element.on("scroll", function (event) {
+          let raw = element[0] || element;
+          if (raw.scrollTop + raw.offsetHeight >= raw.scrollHeight) {
+              scope.$apply(function () {
+                  scope.$eval(attrs.ngInfiniteScroll);
+              });
+              event.preventDefault();
+          }
+      });
+
+  };
+});
+angular.module('MarvelApp').directive("directiveWhenScrolled", function() {
+    return function(scope, elm, attr) {
+      var raw = elm[0];
+  
+      elm.bind('scroll', function() {
+        if (raw.scrollTop + raw.offsetHeight >= raw.scrollHeight) {
+          scope.$apply(attr.directiveWhenScrolled);
+        }
+      });
+    };
+});
+angular.module('MarvelApp').directive('ifLoading', function($http, $resource){
+	// Runs during compile
+    return {
+        restrict: 'A',
+        link: function(scope, elem) {
+            scope.isLoading = isLoading;
+
+            scope.$watch(scope.isLoading, toggleElement);
+
+            function toggleElement(loading) {
+
+              if (loading) {
+                elem[0].style.display = "block";
+              } else {
+                elem[0].style.display = "none";
+              }
+            }
+
+            function isLoading() {
+              return $http.pendingRequests.length > 0;
+            }
+        }
+    }
+});
 (function  () {
 	angular.module('MarvelApp')
 	.filter('elipsiFilter', elipsiFilter);

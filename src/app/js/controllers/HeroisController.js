@@ -8,7 +8,9 @@ angular.module('MarvelApp').controller('HeroisController',
     $scope.heroSeries = [];
     $scope.creatorsComics = [];
     $scope.limit = 5;
-    $scope.offset = 98;
+    $scope.offset = 0;
+
+    $scope.offset = Math.floor((Math.random() * 1000) + 1);
 
     //Serviço que busca pelo parâmetro do herói
     HttpService.getHero($stateParams.id).then(function successCallback(response) {
